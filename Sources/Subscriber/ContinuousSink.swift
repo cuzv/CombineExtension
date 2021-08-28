@@ -1,15 +1,11 @@
-//
-//  ContinuousSink.swift
-//  
-//
-//  Created by Shaw on 12/16/19.
-//
-
 import Foundation
 import Combine
 
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
 extension Subscribers {
     public final class ContinuousSink<Input, Failure: Error>: Subscriber, Cancellable, CustomStringConvertible, CustomReflectable, CustomPlaygroundDisplayConvertible {
+        typealias SubscriptionStatus = CombineExtensions.SubscriptionStatus
+
         public let receiveValue: (Input) -> Void
         public let receiveCompletion: (Subscribers.Completion<Failure>) -> Void
         private var status = SubscriptionStatus.awaitingSubscription
@@ -55,6 +51,7 @@ extension Subscribers {
     }
 }
 
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
 extension Publisher {
     public func continuousSink(
         receiveCompletion: @escaping (Subscribers.Completion<Failure>) -> Void,
@@ -69,6 +66,7 @@ extension Publisher {
     }
 }
 
+@available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
 extension Publisher where Failure == Never {
     public func continuousSink(
         receiveValue: @escaping (Output) -> Void
