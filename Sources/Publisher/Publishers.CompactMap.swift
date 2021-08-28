@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Combine
 import Infrastructure
 
@@ -27,3 +28,4 @@ extension Publisher {
         }
     }
 }
+#endif

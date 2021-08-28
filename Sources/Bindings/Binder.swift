@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -151,3 +152,4 @@ extension Subscribers.Binder: UnidirectionalBinding {
         source.bind(to: subscriber)
     }
 }
+#endif

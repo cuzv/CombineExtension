@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -9,3 +10,4 @@ extension CombineExtensions {
         case terminal
     }
 }
+#endif

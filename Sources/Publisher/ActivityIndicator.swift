@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -52,3 +53,4 @@ extension Publisher {
         activityIndicator.trackActivityOfPublisher(source: self)
     }
 }
+#endif

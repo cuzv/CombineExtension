@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -79,3 +80,4 @@ extension Publisher where Failure == Never {
         return AnyCancellable(subscriber)
     }
 }
+#endif

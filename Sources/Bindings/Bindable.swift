@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 import Infrastructure
@@ -39,3 +40,4 @@ extension CurrentValueSubject: Bindable {}
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
 extension PassthroughSubject: Bindable {}
+#endif

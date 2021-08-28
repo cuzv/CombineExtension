@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Combine
 import Infrastructure
 
@@ -126,3 +127,4 @@ extension Publisher where Output: Sequence {
         }
     }
 }
+#endif

@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -110,3 +111,4 @@ extension Combine where Base: AnyObject & Bindable {
         }
     }
 }
+#endif

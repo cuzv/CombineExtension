@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Foundation
 import Combine
 
@@ -38,3 +39,4 @@ extension Publisher {
         source => subscriber
     }
 }
+#endif

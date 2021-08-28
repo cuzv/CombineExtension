@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Combine
 import Foundation
 
@@ -43,3 +44,4 @@ public extension FileManager {
         }
     }
 }
+#endif

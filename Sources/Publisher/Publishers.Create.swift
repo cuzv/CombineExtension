@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Combine
 import CombineExt
 
@@ -19,3 +20,4 @@ extension AnyPublisher {
         }
     }
 }
+#endif

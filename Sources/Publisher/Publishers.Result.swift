@@ -1,3 +1,4 @@
+#if canImport(Combine)
 import Combine
 import CombineExt
 import Infrastructure
@@ -28,3 +29,4 @@ extension Publisher where Output: ResultConvertible, Failure == Never {
         compactMap(\.result.failure).eraseToAnyPublisher()
     }
 }
+#endif
