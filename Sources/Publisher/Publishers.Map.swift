@@ -126,5 +126,11 @@ extension Publisher where Output: Sequence {
             $0.sorted(by: keyPath)
         }
     }
+
+    public func reversed() -> Publishers.Map<Self, [Output.Element]> {
+        map {
+            $0.lazy.reversed()
+        }
+    }
 }
 #endif
