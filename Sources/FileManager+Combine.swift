@@ -8,7 +8,7 @@ public extension FileManager {
         .single { promise in
             do {
                 let documentsURL = try self.url(
-                    for: .applicationSupportDirectory,
+                    for: directory,
                     in: .userDomainMask,
                     appropriateFor: nil,
                     create: true
@@ -27,7 +27,7 @@ public extension FileManager {
         .single { promise in
             do {
                 let documentsURL = try self.url(
-                    for: .applicationSupportDirectory,
+                    for: directory,
                     in: .userDomainMask,
                     appropriateFor: nil,
                     create: true
