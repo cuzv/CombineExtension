@@ -86,6 +86,16 @@ extension Publisher {
       return result
     }
   }
+
+  public func result<T>(
+    _ transform: @escaping (Output) throws -> T
+  ) -> Publishers.Map<Self, Result<T, AnyError>> {
+    map { output in
+      Result(attempt: {
+        try transform(output)
+      })
+    }
+  }
 }
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
