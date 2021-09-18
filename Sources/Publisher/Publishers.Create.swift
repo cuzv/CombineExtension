@@ -10,8 +10,8 @@ extension AnyPublisher {
     return .create { subscriber in
       return AnyCancellable(factory { result in
         switch result {
-        case let .success(ouput):
-          subscriber.send(ouput)
+        case let .success(output):
+          subscriber.send(output)
           subscriber.send(completion: .finished)
         case let .failure(error):
           subscriber.send(completion: .failure(error))
