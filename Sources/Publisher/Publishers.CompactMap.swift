@@ -4,7 +4,7 @@ import Infrastructure
 
 @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, macCatalyst 13.0, *)
 extension Publisher {
-  public func ignoreNils<Wrapped>()
+  public func dropNils<Wrapped>()
   -> Publishers.CompactMap<Self, Wrapped>
   where Output == Wrapped? {
     compactMap { $0 ?? nil }

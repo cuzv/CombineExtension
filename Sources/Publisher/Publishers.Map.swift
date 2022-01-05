@@ -121,19 +121,23 @@ extension Publisher where Output: Sequence {
     }
   }
 
-  public func sorted<T: Comparable>(
-    by keyPath: KeyPath<Output.Element, T>
-  ) -> Publishers.Map<Self, [Output.Element]> {
-    map {
-      $0.sorted(by: keyPath)
+  public func sorted<T>(
+    by transform: @escaping (Output.Element) throws -> T
+  ) rethrows -> Publishers.TryMap<Self, [Output.Element]> where T: Comparable {
+    tryMap {
+      try $0.lazy.sorted { lhs, rhs in
+        (try transform(lhs)) < (try transform(rhs))
+      }
     }
   }
 
-  public func sorted<T: Comparable>(
-    by keyPath: KeyPath<Output.Element, T?>
-  ) -> Publishers.Map<Self, [Output.Element]> {
+  public func sorted<T>(
+    by transform: @escaping (Output.Element) -> T
+  ) -> Publishers.Map<Self, [Output.Element]> where T: Comparable {
     map {
-      $0.sorted(by: keyPath)
+      $0.lazy.sorted { lhs, rhs in
+        transform(lhs) < transform(rhs)
+      }
     }
   }
 
