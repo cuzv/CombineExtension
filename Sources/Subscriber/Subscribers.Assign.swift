@@ -29,5 +29,21 @@ extension Publisher where Failure == Never {
   ) -> AnyCancellable {
     map(Optional.init).assign(to: keyPath, on: object)
   }
+
+  public func assignWeak<Root>(
+    to keyPath: ReferenceWritableKeyPath<Root, Output>,
+    on object: Root?
+  ) -> AnyCancellable where Root: AnyObject {
+    sink { [weak object] value in
+      object?[keyPath: keyPath] = value
+    }
+  }
+
+  public func assignWeak<Root>(
+    to keyPath: ReferenceWritableKeyPath<Root, Output?>,
+    on object: Root?
+  ) -> AnyCancellable where Root: AnyObject {
+    map(Optional.init).assignWeak(to: keyPath, on: object)
+  }
 }
 #endif
