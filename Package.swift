@@ -6,10 +6,10 @@ import PackageDescription
 let package = Package(
   name: "CombineExtension",
   platforms: [
-    .iOS(.v10),
-    .macOS(.v10_12),
+    .iOS(.v13),
     .tvOS(.v10),
-    .watchOS(.v3),
+    .macOS(.v10_12),
+    .watchOS(.v3)
   ],
   products: [
     .library(
@@ -19,7 +19,7 @@ let package = Package(
   ],
   dependencies: [
     .package(name: "Infrastructure", url: "https://github.com/cuzv/Infrastructure", .branch("master")),
-    .package(name: "CombineExt", url: "https://github.com/CombineCommunity/CombineExt", from: "1.3.0"),
+    .package(name: "CombineExt", url: "https://github.com/CombineCommunity/CombineExt", from: "1.7.0"),
   ],
   targets: [
     .target(
