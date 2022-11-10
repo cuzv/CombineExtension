@@ -28,5 +28,21 @@ extension Publisher where Output: ResultConvertible, Failure == Never {
   public func failures() -> AnyPublisher<Output.Failure, Never> {
     compactMap(\.result.failure).eraseToAnyPublisher()
   }
+
+  public func decouple() -> AnyPublisher<Output.Success, Output.Failure> {
+    setFailureType(to: Output.Failure.self)
+      .flatMapLatest { out in
+        switch out.result {
+        case let .success(value):
+          return Just(value)
+            .setFailureType(to: Output.Failure.self)
+            .eraseToAnyPublisher()
+        case let .failure(error):
+          return Fail(error: error)
+            .eraseToAnyPublisher()
+        }
+      }
+      .eraseToAnyPublisher()
+  }
 }
 #endif
