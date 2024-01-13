@@ -3,12 +3,12 @@ import Combine
 import CombineExt
 
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-extension AnyPublisher {
-  public static func single(
+public extension AnyPublisher {
+  static func single(
     _ factory: @escaping (@escaping (Swift.Result<Output, Failure>) -> Void) -> () -> Void
   ) -> AnyPublisher<Output, Failure> {
-    return .create { subscriber in
-      return AnyCancellable(factory { result in
+    .create { subscriber in
+      AnyCancellable(factory { result in
         switch result {
         case let .success(output):
           subscriber.send(output)

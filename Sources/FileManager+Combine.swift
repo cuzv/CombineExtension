@@ -16,7 +16,7 @@ public extension FileManager {
         )
 
         let fileURL = documentsURL.appendingPathComponent(name)
-        promise(.success(try Data(contentsOf: fileURL)))
+        try promise(.success(Data(contentsOf: fileURL)))
       } catch {
         promise(.failure(error))
       }
