@@ -14,7 +14,7 @@ apple_framework(
         "//visibility:public",
     ],
     deps = [
-        "//internals/Infrastructure",
+        "//internals/Infra",
         "@CombineExt",
     ],
 )
