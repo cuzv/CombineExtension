@@ -18,7 +18,7 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(name: "Infrastructure", url: "https://github.com/cuzv/Infrastructure", .branch("master")),
+    .package(name: "Infra", url: "https://github.com/cuzv/Infra", .branch("master")),
     .package(name: "CombineExt", url: "https://github.com/CombineCommunity/CombineExt", from: "1.7.0"),
   ],
   targets: [
@@ -26,7 +26,7 @@ let package = Package(
       name: "CombineExtension",
       dependencies: [
         "CombineExt",
-        "Infrastructure",
+        "Infra",
       ],
       path: "Sources"
     ),
