@@ -18,8 +18,8 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(name: "Infra", url: "https://github.com/cuzv/Infra", .branch("master")),
-    .package(name: "CombineExt", url: "https://github.com/CombineCommunity/CombineExt", from: "1.7.0"),
+    .package(url: "https://github.com/cuzv/Infra", branch: "master"),
+    .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.7.0"),
   ],
   targets: [
     .target(
