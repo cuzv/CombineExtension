@@ -7,9 +7,9 @@ let package = Package(
   name: "CombineExtension",
   platforms: [
     .iOS(.v13),
-    .tvOS(.v10),
-    .macOS(.v10_12),
-    .watchOS(.v3),
+    .tvOS(.v12),
+    .macOS(.v10_13),
+    .watchOS(.v4),
   ],
   products: [
     .library(
