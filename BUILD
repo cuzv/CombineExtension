@@ -15,6 +15,7 @@ apple_framework(
     ],
     deps = [
         "//internals/Infra",
+        "@CombineCocoa",
         "@CombineExt",
     ],
 )
