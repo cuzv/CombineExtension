@@ -14,6 +14,7 @@ Pod::Spec.new do |spec|
   spec.source_files                   = "Sources/**/*.swift"
   spec.requires_arc                   = true
   spec.swift_versions                 = '5'
-  spec.dependency 'CombineExt', '~> 1.7.0'
+  spec.dependency 'CombineExt'
+  spec.dependency 'CombineCocoa'
   spec.dependency 'Infra'
 end
