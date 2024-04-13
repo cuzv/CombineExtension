@@ -1,6 +1,7 @@
 #if !(os(iOS) && (arch(i386) || arch(arm)))
 import Combine
 import CombineCocoa
+import UIKit
 
 public extension UIScrollView {
   func loadMorePublisher(offset: CGFloat = 0) -> AnyPublisher<Void, Never> {
