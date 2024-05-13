@@ -19,6 +19,13 @@ public extension UIScrollView {
       .map { _ in () }
       .eraseToAnyPublisher()
   }
+
+  var shouldScrollToTopPublisher: AnyPublisher<Bool, Never> {
+    let selector = #selector(UIScrollViewDelegate.scrollViewShouldScrollToTop(_:))
+    return delegateProxy.interceptSelectorPublisher(selector)
+      .map { $0[1] as! Bool }
+      .eraseToAnyPublisher()
+  }
 }
 
 #endif
