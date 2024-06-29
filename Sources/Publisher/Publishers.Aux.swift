@@ -50,11 +50,49 @@ public extension AnyPublisher {
     }
   }
 
+  static func formResult<Input, SubScheduler, RevScheduler>(
+    _ transform: @escaping (Input) -> AnyPublisher<Output, Failure>,
+    subscribeOn sub: SubScheduler,
+    subscribeOptions subOptions: SubScheduler.SchedulerOptions? = nil,
+    receiveOn rev: RevScheduler,
+    receiveOptions revOptions: RevScheduler.SchedulerOptions? = nil
+  ) -> (Input) -> AnyPublisher<Result<Output, Failure>, Never>
+    where SubScheduler: Scheduler, RevScheduler: Scheduler
+  {
+    {
+      transform($0)
+        .formResult()
+        .subscribe(on: sub, options: subOptions)
+        .receive(on: rev, options: revOptions)
+        .eraseToAnyPublisher()
+    }
+  }
+
   static func withFormResult<Input>(
     _ transform: @escaping (Input) -> AnyPublisher<Output, Failure>
   ) -> (Input) -> AnyPublisher<Result<(Input, Output), Failure>, Never> {
     {
       transform($0).with($0).reverse().formResult()
+    }
+  }
+
+  static func withFormResult<Input, SubScheduler, RevScheduler>(
+    _ transform: @escaping (Input) -> AnyPublisher<Output, Failure>,
+    subscribeOn sub: SubScheduler,
+    subscribeOptions subOptions: SubScheduler.SchedulerOptions? = nil,
+    receiveOn rev: RevScheduler,
+    receiveOptions revOptions: RevScheduler.SchedulerOptions? = nil
+  ) -> (Input) -> AnyPublisher<Result<(Input, Output), Failure>, Never>
+    where SubScheduler: Scheduler, RevScheduler: Scheduler
+  {
+    {
+      transform($0)
+        .with($0)
+        .reverse()
+        .formResult()
+        .subscribe(on: sub, options: subOptions)
+        .receive(on: rev, options: revOptions)
+        .eraseToAnyPublisher()
     }
   }
 }

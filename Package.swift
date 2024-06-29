@@ -19,13 +19,15 @@ let package = Package(
   ],
   dependencies: [
     .package(url: "https://github.com/cuzv/Infra", branch: "master"),
-    .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.7.0"),
+    .package(url: "https://github.com/CombineCommunity/CombineCocoa", from: "0.4.1"),
+    .package(url: "https://github.com/CombineCommunity/CombineExt", from: "1.8.1"),
   ],
   targets: [
     .target(
       name: "CombineExtension",
       dependencies: [
         "CombineExt",
+        "CombineCocoa",
         "Infra",
       ],
       path: "Sources"

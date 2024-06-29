@@ -2,9 +2,10 @@
 import Combine
 import CombineExt
 
+@available(*, unavailable, message: "`CombineExt.AnyPublisher.create` method is buggy when use followed with `.subscribe(on: backgroundQueue)` inside/outside of `flatMapLatest`")
 @available(OSX 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
 public extension AnyPublisher {
-  static func single(
+  static func _single_(
     _ factory: @escaping (@escaping (Swift.Result<Output, Failure>) -> Void) -> () -> Void
   ) -> AnyPublisher<Output, Failure> {
     .create { subscriber in

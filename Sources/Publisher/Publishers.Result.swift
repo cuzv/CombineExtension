@@ -8,12 +8,9 @@ public extension Publisher {
   func formResult() -> AnyPublisher<Result<Output, Failure>, Never> {
     materialize().compactMap { event -> Result<Output, Failure>? in
       switch event {
-      case let .value(output):
-        .success(output)
-      case let .failure(error):
-        .failure(error)
-      case .finished:
-        nil
+      case let .value(output): .success(output)
+      case let .failure(error): .failure(error)
+      case .finished: nil
       }
     }.eraseToAnyPublisher()
   }
